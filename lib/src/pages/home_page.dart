@@ -2,7 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/src/themes/light_color.dart';
 import 'package:flutter_ecommerce_app/src/themes/themes.dart';
-
+import 'package:flutter_ecommerce_app/src/model/data.dart';
+import 'package:flutter_ecommerce_app/src/widgets/product_icon.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -23,15 +24,39 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               _search(),
+              _categoryWidget(),
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget _categoryWidget() {
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 10),
+      width: AppTheme.fullWidth(context),
+      height: 80,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: AppData.categoryList
+          .map((category) => ProductIcon(
+            model: category,
+            onSelected: (model) {
+              setState(() {
+                AppData.categoryList.forEach((item) {
+                  item.isSelected = false;
+                });
+                model.isSelected = true;
+              });
+            }
+        )).toList()
+      ),
+    );
+  }
+
   Widget _search() {
     return Container(
-
         margin: EdgeInsets.only(right: 20, left: 20, top: 50),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
