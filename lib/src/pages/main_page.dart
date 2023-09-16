@@ -3,7 +3,6 @@ import 'package:flutter_ecommerce_app/src/themes/themes.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 import 'package:flutter_ecommerce_app/src/pages/home_page.dart';
 import 'package:flutter_ecommerce_app/src/pages/shopping_cart_page.dart';
-
 import '../widgets/BottomNavigationBar/bottom_navigation_bar.dart';
 
 class MainPage extends StatefulWidget {
@@ -13,7 +12,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  bool isHomePageSelected = true;
+  bool isHomePageSelected = false;
 
   void onBottomIconPressed(int index) {
     if (index == 0 || index == 1) {
