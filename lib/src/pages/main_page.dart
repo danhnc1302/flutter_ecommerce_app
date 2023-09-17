@@ -3,7 +3,7 @@ import 'package:flutter_ecommerce_app/src/themes/themes.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 import 'package:flutter_ecommerce_app/src/pages/home_page.dart';
 import 'package:flutter_ecommerce_app/src/pages/shopping_cart_page.dart';
-import '../widgets/BottomNavigationBar/bottom_navigation_bar.dart';
+import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -12,8 +12,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  bool isHomePageSelected = false;
-
+  bool isHomePageSelected = true;
+  int _selectedIdx = 0;
   void onBottomIconPressed(int index) {
     if (index == 0 || index == 1) {
       setState(() {
@@ -69,8 +69,42 @@ class _MainPageState extends State<MainPage> {
             Positioned(
               bottom: 0,
                 right: 0,
-                child: CustomBottomNavigationBar(
-                  onIconPresedCallback: onBottomIconPressed,
+                child: SizedBox(
+                  width: AppTheme.fullWidth(context),
+                  child: MoltenBottomNavigationBar(
+                    margin: EdgeInsets.all(10),
+                    borderRaduis: BorderRadius.circular(20),
+                    barHeight: 70,
+                    domeHeight: 20,
+                    domeWidth: 120,
+                    domeCircleColor: Colors.deepOrange,
+                    domeCircleSize: 60,
+                    borderSize: 3,
+                    borderColor: Colors.white,
+                    selectedIndex: _selectedIdx,
+                    onTabChange: (clickedIdx) {
+                        _selectedIdx = clickedIdx;
+                        onBottomIconPressed(clickedIdx);
+                      },
+                    tabs: [
+                      MoltenTab(
+                        icon: Icon(Icons.home, size: 35),
+                        // selectedColor: Colors.yellow,
+                      ),
+                      MoltenTab(
+                        icon: Icon(Icons.search, size: 35),
+                        // selectedColor: Colors.yellow,
+                      ),
+                      MoltenTab(
+                        icon: Icon(Icons.work, size: 35),
+                        // selectedColor: Colors.yellow,
+                      ),
+                      MoltenTab(
+                        icon: Icon(Icons.favorite_outline, size: 35),
+                        // selectedColor: Colors.yellow,
+                      ),
+                    ],
+                  ),
                 )
             )
           ],

@@ -24,8 +24,10 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: AppTheme.padding,
+      padding: AppTheme.padding.copyWith(bottom: 60),
       child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+
         child: Column(
           children: [
             _cartItems(),

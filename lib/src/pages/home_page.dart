@@ -17,9 +17,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-        body: Container(
+    return Container(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 60),
           physics: const BouncingScrollPhysics(),
           dragStartBehavior: DragStartBehavior.start,
           child: Column(
@@ -30,13 +30,12 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 
   Widget _productWidget() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       width: AppTheme.fullWidth(context),
       height: AppTheme.fullWidth(context) * .7,
       child: GridView(
@@ -90,7 +89,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _search() {
     return Container(
-        margin: const EdgeInsets.only(right: 20, left: 20, top: 20),
+        margin: const EdgeInsets.only(right: 20, left: 20),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -120,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.grey
               ),
               padding: const EdgeInsets.all(10),
-              child: Icon(Icons.filter_list, size: 24, color: Colors.black87),
+              child: const Icon(Icons.filter_list, size: 24, color: Colors.black87),
             )
           ],
         ),

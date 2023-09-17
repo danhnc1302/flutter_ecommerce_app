@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  final Function(int) onIconPresedCallback;
-  const CustomBottomNavigationBar({super.key, required this.onIconPresedCallback});
+  final Function(int) onIconPressedCallback;
+  const CustomBottomNavigationBar({super.key, required this.onIconPressedCallback});
 
   @override
   State<CustomBottomNavigationBar> createState() => _CustomBottomNavigationBarState();
